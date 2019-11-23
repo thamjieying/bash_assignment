@@ -5,18 +5,20 @@ function guessinggame {
   echo "How many files are in the current directory?"
   read response
   num_of_files=$( ls -l | wc -l )
-  echo $num_of_files
-
-  if [[ $response -eq $num_of_files ]]; then
-    #statements
-    echo "you are right!"
-  fi
 
   while [[ $response -ne $num_of_files ]]; do
     #statements
-    echo "Guess again"
+    if [[ $response -gt $num_of_files ]]; then
+      #statements
+      echo "Try a smaller number"
+    elif [[ $response -lt $num_of_files ]]; then
+      #statements
+      echo "Try a bigger number"
+    fi
     read response
   done
+
+  echo "you are right!"
 }
 
 guessinggame
